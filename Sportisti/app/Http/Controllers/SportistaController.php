@@ -15,7 +15,7 @@ class SportistaController extends Controller
         $sportisti = Sportista::all();
         $zemlje = Zemlja::all();
 
-        return view('sportisti', ['sportisti' => new SportistiCollection($sportisti), 'zemlja' => $zemlje]);
+        return view('sportisti', ['sportisti' => new SportistiCollection($sportisti), 'zemlje' => $zemlje]);
     }
 
 
@@ -31,6 +31,20 @@ class SportistaController extends Controller
         $sportista = Sportista::find($id);
         $sportista->delete();
         return redirect('/sportisti');
+    }
+
+
+    public function create(Request $request)
+    {
+        $input = $request->all();
+        $sportista = Sportista::create($input);
+        return redirect('/sportisti');
+    }
+
+
+    public function edit( $id ){
+        $sportista = Sportista::find($id);
+        return view('sportista',['sportista' => $sportista]);
     }
 
 
@@ -53,15 +67,6 @@ class SportistaController extends Controller
     // {
     //     return new PoliticianResource($politician);
     // }
-
-
-    // public function create(Request $request)
-    // {
-    //     $input=$request->all();
-    //     $politician = Politician::create($input);
-    //     return redirect('/politician');
-    // }
-
 
     // public function update(Request $request, $id)
     // {

@@ -15,8 +15,9 @@
                                 <h4 class="card-title">{{$sportisti[$i]->ime}} {{$sportisti[$i]->prezime}}</h4>
                                 <h6 class="card-subtitle text-muted">Pol: {{$sportisti[$i]->pol==1?'M':'Z'}}</h6>
                                 <p class="card-text p-y-1">Specijalnost: Atletika<br />Starost: {{$sportisti[$i]->starost}} godina</p>
-                                <a href="/sportisti/{{$sportisti[$i]->id}}" class="card-link">Izmeni</a>
+                                <a href="/sportisti/{{$sportisti[$i]->id}}/edit" class="card-link">Izmeni</a>
                                 <a href="/sportisti/{{$sportisti[$i]->id}}/delete" class="card-link">Obrisi</a>
+                                
                             </div>
                         </div>
                     </div>
@@ -29,6 +30,36 @@
         </div><br>
     </div>
     </div>
+
+
+    <div class='col-4'>
+        <h3>Kreiraj novog sportistu</h3>
+        <form action="/sportisti" method="post">
+            @csrf
+            <label>Ime</label>
+            <input type="text" class='form-control' name='ime'>
+            <label>Prezime</label>
+            <input type="text" class='form-control' name='prezime'>
+            <label>Starost</label>
+            <input type="text" class='form-control' name='starost'>
+            <label>Pol</label>
+            <select class='form-control' name="pol">
+                <option value="1">Muski</option>
+                <option value="0">Zenski</option>
+            </select>
+            <label>Zemlja</label>
+            <select class='form-control' name="zemlja_id">
+                @foreach($zemlje as $zemlja)
+                <option value="{{$zemlja->id}}">{{$zemlja->naziv}}</option>
+                @endforeach
+            </select>
+            <select class='form-control' name="sport_id">
+                <option value="1">nebitan</option>
+            </select>
+            <button class='btn btn-primary form-control mt-2'>Kreiraj</button>
+        </form>
+    </div>
+
 
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>

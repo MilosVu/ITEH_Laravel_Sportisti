@@ -33,6 +33,7 @@ Route::get('/pocetna', [PocetnaController::class, 'pocetnaView']);
 Route::get('/sportisti', [SportistaController::class, 'all']);
 Route::get('/sportisti/{id}/edit', [SportistaController::class, 'edit']);
 Route::get('/sportisti/{id}/delete',[SportistaController::class,'delete']);
+Route::post('/sportisti', [SportistaController::class, 'create']);
 
 
 /**

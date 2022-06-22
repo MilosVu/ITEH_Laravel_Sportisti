@@ -20,4 +20,5 @@ class Sportista extends Model
         return $this->belongsTo(Sport::class);
     }
 
+    
 }
