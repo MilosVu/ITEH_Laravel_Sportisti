@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\AuthController;
+use App\Http\Controllers\PocetnaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,3 +21,5 @@ Route::get('/', [AuthController::class, 'loginView']);
 Route::get('/login', [AuthController::class, 'loginView']);
 
 Route::get('/registracija', [AuthController::class, 'registracijaView']);
+
+Route::get('/pocetna', [PocetnaController::class, 'pocetnaView']);

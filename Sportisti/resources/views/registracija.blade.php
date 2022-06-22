@@ -4,7 +4,7 @@
     </x-slot>
     <div class='col-4'>
         <h3>Registration</h3>
-        <form action="/api/register" method="post">
+        <form action="/api/registracija" method="post">
             @csrf
             <label>Name</label>
             <input type="text" class='form-control' name='name'>
