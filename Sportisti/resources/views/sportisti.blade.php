@@ -15,7 +15,7 @@
 
                                 <h4 class="card-title">{{$sportisti[$i]->ime}} {{$sportisti[$i]->prezime}}</h4>
                                 <h6 class="card-subtitle text-muted">Pol: {{$sportisti[$i]->pol==1?'M':'Z'}}</h6>
-                                <p class="card-text p-y-1">Zemlja: {{$sportisti[$i]->zemlja->naziv}}<br />Specijalnost: {{$sportisti[$i]->sport->naziv}}<br />Starost: {{$sportisti[$i]->starost}} godina</p>
+                                <p class="card-text p-y-1">Zemlja: {{$sportisti[$i]->zemlja->naziv}}<br />Sport: {{$sportisti[$i]->sport->naziv}}<br />Starost: {{$sportisti[$i]->starost}} godina</p>
 
                                 
 

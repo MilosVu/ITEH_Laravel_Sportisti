@@ -28,7 +28,7 @@
                         <a class="nav-link" href="/sportovi">Sportovi</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/search">Pretraga</a>
+                        <a class="nav-link" href="/reprezentacije">Reprezentacije</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/logout">Logout</a>

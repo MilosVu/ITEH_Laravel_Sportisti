@@ -14,7 +14,6 @@ class SportistaController extends Controller
 {
     public function all()
     {
-
         if (auth()->user() == "") {
             return view("login");
         }
@@ -73,6 +72,13 @@ class SportistaController extends Controller
         $sportista->update($input);
 
         return redirect('/sportisti');
+    }
+
+
+    public function search(){
+        $sportisti = Sportista::all();
+        $zemlje = Zemlja::all();
+        return view('search',['sportisti'=>$sportisti, 'zemlje'=>$zemlje]);
     }
 
 }

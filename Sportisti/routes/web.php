@@ -54,6 +54,9 @@ Route::post('/sportovi/{id}', [SportoviController::class, 'update']);
 Route::get('/sportisti/{id}/dodaj-medalju', [MedaljaController::class, 'edit']);
 Route::post('/sportisti/{id}/dodaj-medalju', [MedaljaController::class, 'create']);
 
+
+Route::get('/reprezentacije', [SportistaController::class, 'search']);
+
 // Route::get('/sportovi', function () {
 //     //
 // })->middleware('auth');
