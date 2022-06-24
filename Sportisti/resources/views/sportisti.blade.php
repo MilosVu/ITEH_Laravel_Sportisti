@@ -17,7 +17,7 @@
                                 <p class="card-text p-y-1">Specijalnost: Atletika<br />Starost: {{$sportisti[$i]->starost}} godina</p>
                                 <a href="/sportisti/{{$sportisti[$i]->id}}/edit" class="card-link">Izmeni</a>
                                 <a href="/sportisti/{{$sportisti[$i]->id}}/delete" class="card-link">Obrisi</a>
-                                
+
                             </div>
                         </div>
                     </div>
@@ -53,8 +53,11 @@
                 <option value="{{$zemlja->id}}">{{$zemlja->naziv}}</option>
                 @endforeach
             </select>
+            <label>Sport</label>
             <select class='form-control' name="sport_id">
-                <option value="1">nebitan</option>
+                @foreach($sportovi as $sport)
+                <option value="{{$sport->id}}">{{$sport->naziv}}</option>
+                @endforeach
             </select>
             <button class='btn btn-primary form-control mt-2'>Kreiraj</button>
         </form>

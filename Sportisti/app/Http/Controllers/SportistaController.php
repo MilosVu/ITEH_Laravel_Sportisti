@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\SportistiCollection;
+use App\Models\Sport;
 use App\Models\Sportista;
 use App\Models\Zemlja;
 use Illuminate\Http\Request;
@@ -14,8 +15,9 @@ class SportistaController extends Controller
     {
         $sportisti = Sportista::all();
         $zemlje = Zemlja::all();
+        $sportovi = Sport::all();
 
-        return view('sportisti', ['sportisti' => new SportistiCollection($sportisti), 'zemlje' => $zemlje]);
+        return view('sportisti', ['sportisti' => new SportistiCollection($sportisti), 'zemlje' => $zemlje, 'sportovi' => $sportovi ]);
     }
 
 
@@ -44,7 +46,10 @@ class SportistaController extends Controller
 
     public function edit( $id ){
         $sportista = Sportista::find($id);
-        return view('sportista',['sportista' => $sportista]);
+
+        $zemlje = Zemlja::all();
+        $sportovi = Sport::all();
+        return view('sportista',['sportista' => $sportista, 'zemlje' => $zemlje, 'sportovi' => $sportovi ]);
     }
 
 
@@ -68,13 +73,13 @@ class SportistaController extends Controller
     //     return new PoliticianResource($politician);
     // }
 
-    // public function update(Request $request, $id)
-    // {
-    //     $politician = Politician::find($id);
-    //     $input = $request->all();
-    //     $politician->update($input);
+    public function update(Request $request, $id)
+    {
+        $sportista = Sportista::find($id);
+        $input = $request->all();
+        $sportista->update($input);
 
-    //     return $politician;
-    // }
+        return redirect('/sportisti');
+    }
 
 }
