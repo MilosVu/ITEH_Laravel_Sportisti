@@ -10,13 +10,16 @@ class SportoviController extends Controller
     public function all()
     {
 
-        // if (auth()->user() == "") {
-        //     return view("login");
-        // }
-
         $sportovi = Sport::all();
 
         return view('sportovi', ['sportovi' => $sportovi]);
+    }
+
+    public function index()
+    {
+        $sport = Sport::all();
+
+        return $sport;
     }
 
 
@@ -30,6 +33,12 @@ class SportoviController extends Controller
     public function edit( $id ){
         $sport = Sport::find($id);
         return view('sport',['sport'=>$sport]);
+    }
+
+    public function destroy($id)
+    {
+        $sport = Sport::find($id);
+        $sport->delete();
     }
 
 

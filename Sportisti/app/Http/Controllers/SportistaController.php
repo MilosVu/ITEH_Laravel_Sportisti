@@ -32,10 +32,6 @@ class SportistaController extends Controller
         $sportisti = Sportista::all();
         $sportisti = Sportista::with(["medalje"])->get();;
 
-        // foreach ($sportisti as $s){
-
-        //     $s->medalje = $s->medalje();
-        // }
         return $sportisti;
     }
 

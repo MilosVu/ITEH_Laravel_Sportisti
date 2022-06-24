@@ -23,7 +23,8 @@
     <div class='row mt-2'>
         <div class='col-4'>
             <h3>Kreiraj novi sport</h3>
-            <form action="/sportovi" method="post">
+            <form action="/sportovi">
+                @method('PUT')
                 @csrf
                 <label>Naziv</label>
                 <input type="text" class='form-control' name='naziv'>
