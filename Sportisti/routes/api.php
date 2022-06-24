@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\API\AuthController;
+use App\Http\Controllers\MedaljaController;
 use App\Http\Controllers\SportistaController;
 use App\Http\Controllers\SportoviController;
+use App\Http\Resources\SportistiCollection;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -32,9 +34,10 @@ Route::get('/sportisti', [SportistaController::class, 'index']);
 
 // Route::put('/sportovi', SportoviController::class, 'store');
 
-Route::resource('sportisti', SportistaController::class);
-Route::resource('sportovi', SportoviController::class);
+// Route::resource('sportisti', SportistaController::class);
+// Route::resource('sportovi', SportoviController::class);
 
+Route::get('/reprezentacije/{id_zemlje}', [SportistaController::class, 'reprezentacije']);
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
 
@@ -42,7 +45,10 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
         return auth()->user();
     });
 
-    Route::resource('posts', SportistaController::class)->only(['delete','create','update']);
+
+
+    Route::resource('/sportisti', SportistaController::class)->only(['delete','create','update']);
+    Route::resource('sportovi', SportoviController::class);
 
     // API route for logout user
     Route::post('/logout', [AuthController::class, 'logout']);

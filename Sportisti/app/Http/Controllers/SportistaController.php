@@ -18,7 +18,7 @@ class SportistaController extends Controller
             return view("login");
         }
 
-        $sportisti = Sportista::with(["medalje"])->get();;
+        $sportisti = Sportista::with(["medalje"])->get();
         $zemlje = Zemlja::all();
         $sportovi = Sport::all();
 
@@ -75,10 +75,26 @@ class SportistaController extends Controller
     }
 
 
-    public function search(){
+    public function view_reprezentacije(){
         $sportisti = Sportista::all();
         $zemlje = Zemlja::all();
-        return view('search',['sportisti'=>$sportisti, 'zemlje'=>$zemlje]);
+
+        return view('reprezentacije',['sportisti'=>$sportisti, 'zemlje'=>$zemlje]);
+    }
+
+
+    public function reprezentacije( $id_zemlje ){
+
+        $sportisti = Sportista::with(["sport"])->get();
+
+        $reprezentacija = [];
+
+        foreach ($sportisti as $sportista) {
+            if($sportista->zemlja->id == $id_zemlje)
+                array_push( $reprezentacija, $sportista);
+        }
+
+        return response()->json(["reprezentacija" => $reprezentacija]);
     }
 
 }
