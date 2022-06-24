@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\AuthController;
+use App\Http\Controllers\MedaljaController;
 use App\Http\Controllers\PocetnaController;
 use App\Http\Controllers\SportistaController;
 use App\Http\Controllers\SportoviController;
@@ -45,6 +46,13 @@ Route::get('/sportovi', [SportoviController::class, 'all']);
 Route::get('/sportovi/{id}/edit', [SportoviController::class, 'edit']);
 Route::post('/sportovi', [SportoviController::class, 'create']);
 Route::post('/sportovi/{id}', [SportoviController::class, 'update']);
+
+/**
+ * Medalje
+ */
+
+Route::get('/sportisti/{id}/dodaj-medalju', [MedaljaController::class, 'edit']);
+Route::post('/sportisti/{id}/dodaj-medalju', [MedaljaController::class, 'create']);
 
 // Route::get('/sportovi', function () {
 //     //

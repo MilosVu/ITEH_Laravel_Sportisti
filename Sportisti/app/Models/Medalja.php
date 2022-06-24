@@ -11,7 +11,7 @@ class Medalja extends Model
     protected $table = 'medalja';
 
     use HasFactory;
-    protected $fillable=['takmicenje','godina'];
+    protected $fillable=['takmicenje','godina','sportista_id'];
 
 
     public function sportista()

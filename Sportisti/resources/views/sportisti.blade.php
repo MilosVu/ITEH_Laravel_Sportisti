@@ -15,7 +15,7 @@
 
                                 <h4 class="card-title">{{$sportisti[$i]->ime}} {{$sportisti[$i]->prezime}}</h4>
                                 <h6 class="card-subtitle text-muted">Pol: {{$sportisti[$i]->pol==1?'M':'Z'}}</h6>
-                                <p class="card-text p-y-1">Specijalnost: {{$sportisti[$i]->sport->naziv}}<br />Starost: {{$sportisti[$i]->starost}} godina</p>
+                                <p class="card-text p-y-1">Zemlja: {{$sportisti[$i]->zemlja->naziv}}<br />Specijalnost: {{$sportisti[$i]->sport->naziv}}<br />Starost: {{$sportisti[$i]->starost}} godina</p>
 
                                 
 
@@ -32,6 +32,7 @@
                                 @endif
 
                                 <a href="/sportisti/{{$sportisti[$i]->id}}/edit" class="card-link">Izmeni</a>
+                                <a href="/sportisti/{{$sportisti[$i]->id}}/dodaj-medalju" class="card-link">Dodaj medalju</a>
                                 <a href="/sportisti/{{$sportisti[$i]->id}}/delete" class="card-link">Obrisi</a>
 
                             </div>
