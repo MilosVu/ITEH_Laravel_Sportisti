@@ -26,9 +26,11 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/search">Pretraga</a>
                     </li>
+                    @if(auth()->user() == null)
                     <li class="nav-item">
                         <a class="nav-link" href="/login">Login</a>
                     </li>
+                    @endif
                     <li class="nav-item">
                         <a class="nav-link" href="/logout">Logout</a>
                     </li>

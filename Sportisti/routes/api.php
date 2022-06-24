@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\API\AuthController;
+use App\Http\Controllers\SportistaController;
+use App\Http\Controllers\SportoviController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -15,13 +17,35 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+/**
+ * GET /sportisti - vrati mi sve sportiste iz baze - metoda index iz kontrolera
+ * GET /sportisti/{id} - vrati sportistu sa datim id - jem - show iz kontrolera
+ * POST /politicians - kreiraj novog politicara podacima iz tela zavteva - store
+ * PUT /politicians/{id} - izmeni politicara sa datim id - jem podacima iz tela zavteva - update
+ * DELETE /politicians/{id} - obrisi politicara sa datim id - jem iz baze - destroy
+ */
 
 Route::post('/registracija', [AuthController::class, 'register']);
-
-
 Route::post('/login', [AuthController::class, 'login']);
 
+Route::get('/sportisti', [SportistaController::class, 'index']);
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+// Route::put('/sportovi', SportoviController::class, 'store');
+
+Route::resource('sportisti', SportistaController::class);
+Route::resource('sportovi', SportoviController::class);
+
+
+Route::group(['middleware' => ['auth:sanctum']], function () {
+
+    Route::get('/profile', function (Request $request) {
+        return auth()->user();
+    });
+
+    Route::resource('posts', SportistaController::class)->only(['delete','create','update']);
+
+    // API route for logout user
+    Route::post('/logout', [AuthController::class, 'logout']);
+
+
 });

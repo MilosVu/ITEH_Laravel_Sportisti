@@ -3,12 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PocetnaController extends Controller
 {
     public function pocetnaView()
     {
-
-        return view('pocetna');
+        if (auth()->user() == "") {
+            return view("login");
+        }
+        else{
+            return view('pocetna');
+        }
     }
 }

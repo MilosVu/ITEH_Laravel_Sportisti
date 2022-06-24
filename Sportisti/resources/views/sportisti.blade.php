@@ -6,7 +6,8 @@
     <div class="py-5">
         <div class="container">
             <div class="row">
-                @for ($i = 0; $i < count($sportisti); $i++) <div class="col-md-4">
+                @for ($i = 0; $i < count($sportisti); $i++) 
+                <div class="col-md-4">
                     <div class="card">
                         <div class="card-block">
                             <img src="https://countryflagsapi.com/png/{{$sportisti[$i]->zemlja->naziv}}" style="width: 150px;" />
@@ -14,7 +15,22 @@
 
                                 <h4 class="card-title">{{$sportisti[$i]->ime}} {{$sportisti[$i]->prezime}}</h4>
                                 <h6 class="card-subtitle text-muted">Pol: {{$sportisti[$i]->pol==1?'M':'Z'}}</h6>
-                                <p class="card-text p-y-1">Specijalnost: Atletika<br />Starost: {{$sportisti[$i]->starost}} godina</p>
+                                <p class="card-text p-y-1">Specijalnost: {{$sportisti[$i]->sport->naziv}}<br />Starost: {{$sportisti[$i]->starost}} godina</p>
+
+                                
+
+                                @if( count($sportisti[$i]->medalje) > 0 )
+                                <p class="card-text p-y-1">Medalje: <br /> 
+                                @endif
+
+                                @for ($j = 0; $j < count($sportisti[$i]->medalje); $j++)
+                                    Takmicenje: {{$sportisti[$i]->medalje[$j]->takmicenje}}, {{$sportisti[$i]->medalje[$j]->godina}}. godine<br />
+                                @endfor
+
+                                @if( count($sportisti[$i]->medalje) > 0 )
+                                </p> 
+                                @endif
+
                                 <a href="/sportisti/{{$sportisti[$i]->id}}/edit" class="card-link">Izmeni</a>
                                 <a href="/sportisti/{{$sportisti[$i]->id}}/delete" class="card-link">Obrisi</a>
 

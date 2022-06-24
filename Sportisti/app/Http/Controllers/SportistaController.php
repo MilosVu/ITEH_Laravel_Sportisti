@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\SportistiCollection;
+use App\Models\Medalja;
 use App\Models\Sport;
 use App\Models\Sportista;
 use App\Models\Zemlja;
@@ -13,17 +14,29 @@ class SportistaController extends Controller
 {
     public function all()
     {
-        $sportisti = Sportista::all();
+
+        if (auth()->user() == "") {
+            return view("login");
+        }
+
+        $sportisti = Sportista::with(["medalje"])->get();;
         $zemlje = Zemlja::all();
         $sportovi = Sport::all();
 
-        return view('sportisti', ['sportisti' => new SportistiCollection($sportisti), 'zemlje' => $zemlje, 'sportovi' => $sportovi ]);
+
+        return view('sportisti', ['sportisti' => new SportistiCollection($sportisti), 'zemlje' => $zemlje, 'sportovi' => $sportovi]);
     }
 
 
     public function index()
     {
         $sportisti = Sportista::all();
+        $sportisti = Sportista::with(["medalje"])->get();;
+
+        // foreach ($sportisti as $s){
+
+        //     $s->medalje = $s->medalje();
+        // }
         return $sportisti;
     }
 
@@ -52,26 +65,6 @@ class SportistaController extends Controller
         return view('sportista',['sportista' => $sportista, 'zemlje' => $zemlje, 'sportovi' => $sportovi ]);
     }
 
-
-    // public function store(Request $request)
-    // {
-
-    //     $politician = Politician::create([
-    //         'first_name' => $request->first_name,
-    //         'last_name' => $request->last_name,
-    //         'gender' => $request->gender,
-    //         'political_party_id' => $request->political_party_id
-    //     ]);
-
-    //     return $politician;
-
-    // }
-
-
-    // public function show(Politician $politician)
-    // {
-    //     return new PoliticianResource($politician);
-    // }
 
     public function update(Request $request, $id)
     {

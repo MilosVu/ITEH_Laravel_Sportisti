@@ -9,6 +9,11 @@ class SportoviController extends Controller
 {
     public function all()
     {
+
+        // if (auth()->user() == "") {
+        //     return view("login");
+        // }
+
         $sportovi = Sport::all();
 
         return view('sportovi', ['sportovi' => $sportovi]);

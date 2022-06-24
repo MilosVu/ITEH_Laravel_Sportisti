@@ -18,7 +18,13 @@ class Sportista extends Model
 
     public function sport(){
         return $this->belongsTo(Sport::class);
+
     }
+
+    public function medalje()
+    {
+        return $this->hasMany(Medalja::class);
+    }   
 
     
 }

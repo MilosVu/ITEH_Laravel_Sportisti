@@ -15,20 +15,20 @@ class AuthController extends Controller
 
     public function register(Request $request)
     {
-        // $validator = Validator::make($request->all(), [
-        //     'name' => 'required|string|max:255',
-        //     'email' => 'required|string|email|max:255|unique:users',
-        //     'password' => 'required|string|min:8'
-        // ]);
-        // if ($validator->fails()) {
-        //     return redirect('/registracija');
-        //     return response()->json($validator->errors());
-        // }
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:8'
+        ]);
+        if ($validator->fails()) {
+            return redirect('/registracija');
+            return response()->json($validator->errors());
+        }
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password)
-        ]); 
+        ]);
 
         $token = $user->createToken('auth_token')->plainTextToken;
         return redirect('/login');
@@ -51,19 +51,42 @@ class AuthController extends Controller
 
     // public function logout()
     // {
-    //     auth()->user()->tokens()->delete();
-    //     return redirect('/login');
-    //     return [
-    //         'message' => 'You have successfully logger out and the token was successfully deleted'
-    //     ];
+    //     // return redirect('/login');
+
+    //     // return [
+    //     //     'message' => 'You have successfully logger out and the token was successfully deleted'
+    //     // ];
+    //     // Auth::user()->tokens->each(function($token, $key) {
+    //     //     $token->delete();
+    //     // });
+
+    //     // $user = auth('middleware')->user();
+    //     // return response()->json($user);
+
+    //     return response()->json(auth()->user());
+
+    //     // return redirect('/login');
+    //     // return [
+    //     //     'message' => 'Uspesno izlogovan'
+    //     // ];
     // }
+
+    public function logout(Request $request){
+        Auth::logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect('/');
+    }
 
     public function loginView()
     {
 
         return view('login');
     }
-    
+
     public function registracijaView()
     {
 

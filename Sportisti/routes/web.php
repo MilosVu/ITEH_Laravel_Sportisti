@@ -5,6 +5,7 @@ use App\Http\Controllers\PocetnaController;
 use App\Http\Controllers\SportistaController;
 use App\Http\Controllers\SportoviController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Middleware\EnsureTokenIsValid;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,7 +24,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [AuthController::class, 'loginView']);
 Route::get('/login', [AuthController::class, 'loginView']);
 Route::get('/registracija', [AuthController::class, 'registracijaView']);
-
+Route::get('/logout', [AuthController::class, 'logout']);
 
 Route::get('/pocetna', [PocetnaController::class, 'pocetnaView']);
 
@@ -45,7 +46,6 @@ Route::get('/sportovi/{id}/edit', [SportoviController::class, 'edit']);
 Route::post('/sportovi', [SportoviController::class, 'create']);
 Route::post('/sportovi/{id}', [SportoviController::class, 'update']);
 
-
-/**
- * put metoda za update!!!!!!!!!!!!
- */
+// Route::get('/sportovi', function () {
+//     //
+// })->middleware('auth');

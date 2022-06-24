@@ -14,12 +14,12 @@ class SportistaFactory extends Factory
     public function definition()
     {
         return [
-            'ime'=>$this->faker->lexify('???'),
-            'prezime'=>$this->faker->lexify('???'),
+            'ime'=>$this->faker->lexify('?????'),
+            'prezime'=>$this->faker->lexify('??????'),
             'pol'=>$this->faker->numberBetween($min=1,$max=2),
             'starost'=>$this->faker->numberBetween($min=18,$max=32),
-            'sport_id'=>$this->faker->numberBetween($min=1,$max=7),
-            'zemlja_id'=>$this->faker->numberBetween($min=1,$max=12)
+            'sport_id'=>$this->faker->numberBetween($min=23,$max=29),
+            'zemlja_id'=>$this->faker->numberBetween($min=37,$max=48)
         ];
     }
 }
