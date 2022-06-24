@@ -17,6 +17,10 @@
 
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav">
+                    @if(auth()->user() != null)
+                    <li class="nav-item ">
+                        <a class="nav-link" href="/pocetna">Pocetna</a>
+                    </li>
                     <li class="nav-item ">
                         <a class="nav-link" href="/sportisti">Sportisti</a>
                     </li>
@@ -26,15 +30,20 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/search">Pretraga</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout">Logout</a>
+                    </li>
+                    @endif
+                    
                     @if(auth()->user() == null)
                     <li class="nav-item">
                         <a class="nav-link" href="/login">Login</a>
                     </li>
-                    @endif
                     <li class="nav-item">
-                        <a class="nav-link" href="/logout">Logout</a>
+                        <a class="nav-link" href="/registracija">Registracija</a>
                     </li>
-
+                    @endif
+                    
                 </ul>
             </div>
         </nav>
