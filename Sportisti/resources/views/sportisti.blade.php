@@ -6,8 +6,7 @@
     <div class="py-5">
         <div class="container">
             <div class="row">
-                @for ($i = 0; $i < count($sportisti); $i++) 
-                <div class="col-md-4">
+                @for ($i = 0; $i < count($sportisti); $i++) <div class="col-md-4">
                     <div class="card">
                         <div class="card-block">
                             <img src="https://countryflagsapi.com/png/{{$sportisti[$i]->zemlja->naziv}}" style="width: 150px;" />
@@ -17,18 +16,18 @@
                                 <h6 class="card-subtitle text-muted">Pol: {{$sportisti[$i]->pol==1?'M':'Z'}}</h6>
                                 <p class="card-text p-y-1">Zemlja: {{$sportisti[$i]->zemlja->naziv}}<br />Sport: {{$sportisti[$i]->sport->naziv}}<br />Starost: {{$sportisti[$i]->starost}} godina</p>
 
-                                
+
 
                                 @if( count($sportisti[$i]->medalje) > 0 )
-                                <p class="card-text p-y-1">Medalje: <br /> 
-                                @endif
+                                <p class="card-text p-y-1">Medalje: <br />
+                                    @endif
 
-                                @for ($j = 0; $j < count($sportisti[$i]->medalje); $j++)
-                                    Takmicenje: {{$sportisti[$i]->medalje[$j]->takmicenje}}, {{$sportisti[$i]->medalje[$j]->godina}}. godine<br />
-                                @endfor
+                                    @for ($j = 0; $j < count($sportisti[$i]->medalje); $j++)
+                                        Takmicenje: {{$sportisti[$i]->medalje[$j]->takmicenje}}, {{$sportisti[$i]->medalje[$j]->godina}}. godine<br />
+                                        @endfor
 
-                                @if( count($sportisti[$i]->medalje) > 0 )
-                                </p> 
+                                        @if( count($sportisti[$i]->medalje) > 0 )
+                                </p>
                                 @endif
 
                                 <a href="/sportisti/{{$sportisti[$i]->id}}/edit" class="card-link">Izmeni</a>

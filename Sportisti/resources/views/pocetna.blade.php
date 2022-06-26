@@ -1,31 +1,16 @@
 <style>
 
-    button {
-        margin: 20px;
-        padding: 40px 80px;
-        border: none;
-        cursor: pointer;
-    }
-
-    /* PIERWSZY SPOSOB WYKORZYSTANIE CIENIA */
-    .first {
-        background: #19c3d6;
-        box-shadow: inset 0px 0px 0px 0px #ff0099;
-        transition: all 0.5s ease-in-out;
-    }
-
-    .first:hover {
-        box-shadow: inset 0px -200px 0px 0px #ff0099;
-    }
-
-    .container{
-        /* background-image: url('https://images.unsplash.com/photo-1461896836934-ffe607ba8211?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80'); */
-    }
+h1.pocetna-heading {
+    position: absolute;
+    top: 386px;
+    left: 40%;
+    color: white;
+}
 
 </style>
 <x-layout>
 <div clas="container">
-<button class="first">First way</button>
-<button class="first">Second way</button>
+<img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" />
+<h1 class="pocetna-heading">Pocetna stranica</h1>
 </div>
 </x-layout>
